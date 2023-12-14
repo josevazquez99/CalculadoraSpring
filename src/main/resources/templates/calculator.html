@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Calculadora</title>
+</head>
+
+<body>
+	<form class="form-horizontal" th:action="@{resolver}" th:object="${calc}">
+		<fieldset>
+			<legend>Calculadora</legend>
+
+			<div>
+				<label>Número 1</label>
+				<div>
+					<span th:if="${#fields.hasErrors('number1')}" th:errors="*{number1}" class="help-block"
+						id="id-error">Errores</span>
+					<input id="number1" name="number1" th:field="*{number1}" type="number"
+						placeholder="Introduce un número" required>
+				</div>
+				<br>
+				<label>Número 2</label>
+				<div>
+					<input id="number2" name="number2" th:field="*{number2}" type="number"
+						placeholder="Introduce un número" required>
+				</div>
+				<br>
+				<label>Operador</label>
+				<div>
+					<input type="radio" id="operator" th:field="*{operator}" name="operator" value="+" required>
+					<label for="suma">Suma</label>
+					<input type="radio" id="operator" th:field="*{operator}" name="operator" value="-" required>
+					<label for="restar">Restar</label>
+					<input type="radio" id="operator" th:field="*{operator}" name="operator" value="*" required>
+					<label for="multiplicar">Multiplicar</label>
+					<input type="radio" id="operator" th:field="*{operator}" name="operator" value="/" required>
+					<label for="dividir">Dividir</label>
+				</div><br>
+				<label th:text="${result}">
+				</label><br>
+				<button type="submit">Enviar</button>
+			</div>
+		</fieldset>
+	</form>
+	<br>
+	<form class="form-horizontal" th:action="@{resolverVatios}" th:object="${calcV}">
+		<fieldset>
+			<legend></legend>
+
+			<div>
+				<label>Voltios</label>
+				<div>Potencia Electrica
+					<input id="voltio" name="voltio" th:field="*{voltio}" type="number"
+						placeholder="Introduce un número" required>
+				</div>
+				<br>
+				<label>Amperios</label>
+				<div>
+					<input id="amperio" name="amperio" th:field="*{amperio}" type="number"
+						placeholder="Introduce un número" required>
+				</div>
+				<br>
+				<label th:text="${resultV}"></label><br>
+
+				<button type="submit">Enviar</button>
+			</div>
+		</fieldset>
+	</form>
+</body>
+
+</html>
